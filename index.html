@@ -26,6 +26,36 @@
         </div>
         <div class="card-footer">
           <button id="generate" class="btn">Generate Password</button>
+          <form>
+            <label>Password Length</label>
+            <input type="number" name="pwlength" placeholder="8-128 characters">
+            <br>
+            <label>Allow Lowercase Letters</label>
+            <input type="radio" id="lc-true" name="isLowercase" value=true>
+            <label for="lc-true">Yes</label>
+            <input type="radio" id="lc-false" name="isLowercase" value=false>
+            <label for="lc-false">No</label>
+            <br>
+            <label>Allow Uppercase Letters</label>
+            <input type="radio" id="uc-true" name="isUppercase" value=true>
+            <label for="uc-true">Yes</label>
+            <input type="radio" id="uc-false" name="isUppercase" value=false>
+            <label for="uc-false">No</label>
+            <br>
+            <label>Includes numbers</label>
+            <input type="radio" id="num-true" name="isNumeric" value=true>
+            <label for="num-true">Yes</label>
+            <input type="radio" id="num-false" name="isNumeric" value=false>
+            <label for="num-false">No</label>
+            <br>
+            <label>Includes special characters</label>
+            <input type="radio" id="spec-true" name="isSpecial" value=true>
+            <label for="spec-true">Yes</label>
+            <input type="radio" id="spec-false" name="isSpecial" value=false>
+            <label for="spec-false">No</label>
+            <br>
+            <input type="submit" value="Make my Password!">
+          </form>
         </div>
       </div>
     </div>

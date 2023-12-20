@@ -12,3 +12,14 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+
+
+
+//initialize object to store input from form
+let passwordInputs = {
+  pwlength: undefined, //min 8 char, max 128 char
+  isLowercase: true,
+  isUppercase: true,
+  isNumeric: true,
+  isSpecial: true
+}
