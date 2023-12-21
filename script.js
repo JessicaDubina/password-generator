@@ -6,6 +6,7 @@ const uppercaseLetters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N
 const lowercaseLetters = uppercaseLetters.map(letter => letter.toLowerCase());
 const numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 const specialCharacters = ["~","`","!","@","#","$","%","^","&","*","?","/"];
+let numTrue = 0;
 
 // Write password to the #password input
 function writePassword() {
@@ -63,46 +64,71 @@ const generatePassword = () => {
   // check that form data is added
   console.log(passwordInputs);
 
-  // use input to create password
-
-
-  // random number to assign how many capital letters are in the password
-  let numUpper = Math.floor(Math.random() * pwlength);
+  //count how many "Y" (different input types) were selected
   
-  // empty array to store random uppercase letters
-  let upperLetters = [];
-
-  // using random number to determine index of uppercaseLetters to use for password
-  for (let i = 0; i < numUpper; i++) {
-    const upperRandom = Math.floor(Math.random() * uppercaseLetters.length);
-    upperLetters.push(uppercaseLetters[upperRandom]);
-    console.log(upperLetters);
+  for (var i = 0; i < 4; i++) {
+    let passwordInputsBool = [passwordInputs.isLowercase, passwordInputs.isUppercase, passwordInputs.isNumeric, passwordInputs.isSpecial];
+    if (passwordInputsBool[i] === 'Y') {
+      numTrue = numTrue + 1;
+    }
   }
 
-  // decriment number of uppercase letters from total available string slots then run for lowercase next
-  let numLower = Math.floor(Math.random() * (pwlength - numUpper));
-  let lowerLetters = [];
-  for (let i = 0; i < numLower; i++) {
-    const lowerRandom = Math.floor(Math.random() * lowercaseLetters.length);
-    lowerLetters.push(lowercaseLetters[lowerRandom]);
-    console.log(lowerLetters);
+  /* 
+  The code below will use the user input to create the password
+  Assign how many of the character type are in the password. Distibuted equally between character types.
+  Create an empty array to store the characters of that type
+  Use a random number to determine which character to use for the password and loop through for each letter
+  */
+
+    // if (passwordInputsBool = ['N','N','N','N']) {
+    //   alert("No character types selected");
+    //   return "Try again";
+    // }
+
+  const upperLetters = [];
+  if (passwordInputs.isUppercase === 'Y') {
+    let numUpper = Math.floor(pwlength / numTrue);
+    for (let i = 0; i < numUpper; i++) {
+      const upperRandom = Math.floor(Math.random() * uppercaseLetters.length);
+      upperLetters.push(uppercaseLetters[upperRandom]);
+    }
+  }
+  console.log(upperLetters);
+
+  const lowerLetters = [];
+  if (passwordInputs.isLowercase === 'Y'){
+    let numLower = Math.floor(pwlength / numTrue);
+    for (let i = 0; i < numLower; i++) {
+      const lowerRandom = Math.floor(Math.random() * lowercaseLetters.length);
+      lowerLetters.push(lowercaseLetters[lowerRandom]);
+    }
   }
 
-  let numNumbers = Math.floor(Math.random() * (pwlength - numUpper - numLower));
-  let pwdNumbers = [];
-  for (let i = 0; i < numNumbers; i++) {
-    const numRandom = Math.floor(Math.random() * numbers.length);
-    pwdNumbers.push(numbers[numRandom]);
-    console.log(pwdNumbers);
-  }
+  console.log(lowerLetters);
 
-  let numSpecial = pwlength - numUpper - numLower - numNumbers;
-  let pwdSpecial = [];
-  for (let i = 0; i < numSpecial; i++) {
-    const specialRandom = Math.floor(Math.random() * specialCharacters.length);
-    pwdSpecial.push(specialCharacters[specialRandom]);
-    console.log(pwdSpecial);
+  const pwdNumbers = [];
+  if (passwordInputs.isNumeric === 'Y') {
+    let numNumbers = Math.floor(pwlength / numTrue);
+    for (let i = 0; i < numNumbers; i++) {
+      const numRandom = Math.floor(Math.random() * numbers.length);
+      pwdNumbers.push(numbers[numRandom]);
+    }
   }
+  console.log(pwdNumbers);
+  
+  const pwdSpecial = [];
+  if (passwordInputs.isSpecial === 'Y') {
+    let numSpecial = Math.floor(pwlength / numTrue) + (pwlength % numTrue);
+    for (let i = 0; i < numSpecial; i++) {
+      const specialRandom = Math.floor(Math.random() * specialCharacters.length);
+      pwdSpecial.push(specialCharacters[specialRandom]);
+    }
+  }
+  console.log(pwdSpecial);
 
 }
 
+//add conditionals for number of trues to make sure a slot is available for each type
+//add conditionals for if one of the types is false
+//put the password characters into a single array
+//randomize location of each character - mix it up
