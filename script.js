@@ -2,7 +2,10 @@
 var generateBtn = document.querySelector("#generate");
 
 //create option lists for each input type
-const uppercaseLetters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q"]
+const uppercaseLetters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+const lowercaseLetters = uppercaseLetters.map(letter => letter.toLowerCase());
+const numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+const specialCharacters = ["~","`","!","@","#","$","%","^","&","*","?","/"];
 
 // Write password to the #password input
 function writePassword() {
@@ -68,19 +71,38 @@ const generatePassword = () => {
   
   // empty array to store random uppercase letters
   let upperLetters = [];
-  for (let i = 0; i < numUpper; i++) {
+
   // using random number to determine index of uppercaseLetters to use for password
-  const upperRandom = Math.floor(Math.random() * uppercaseLetters.length);
-  // uppercaseLetters[i] = uppercaseLetters[upperRandom];
-  // uppercaseLetters[upperRandom].push(uppercaseLetters[i]);
-  upperLetters[i] = upperLetters.push(uppercaseLetters[upperRandom]);
-  console.log(upperLetters);
+  for (let i = 0; i < numUpper; i++) {
+    const upperRandom = Math.floor(Math.random() * uppercaseLetters.length);
+    upperLetters.push(uppercaseLetters[upperRandom]);
+    console.log(upperLetters);
   }
 
-  // let numLower = Math.floor(Math.random() * pwlength);
+  // decriment number of uppercase letters from total available string slots then run for lowercase next
+  let numLower = Math.floor(Math.random() * (pwlength - numUpper));
+  let lowerLetters = [];
+  for (let i = 0; i < numLower; i++) {
+    const lowerRandom = Math.floor(Math.random() * lowercaseLetters.length);
+    lowerLetters.push(lowercaseLetters[lowerRandom]);
+    console.log(lowerLetters);
+  }
 
-  
+  let numNumbers = Math.floor(Math.random() * (pwlength - numUpper - numLower));
+  let pwdNumbers = [];
+  for (let i = 0; i < numNumbers; i++) {
+    const numRandom = Math.floor(Math.random() * numbers.length);
+    pwdNumbers.push(numbers[numRandom]);
+    console.log(pwdNumbers);
+  }
 
+  let numSpecial = pwlength - numUpper - numLower - numNumbers;
+  let pwdSpecial = [];
+  for (let i = 0; i < numSpecial; i++) {
+    const specialRandom = Math.floor(Math.random() * specialCharacters.length);
+    pwdSpecial.push(specialCharacters[specialRandom]);
+    console.log(pwdSpecial);
+  }
 
 }
 
