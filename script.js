@@ -2,7 +2,7 @@
 var generateBtn = document.querySelector("#generate");
 
 //create option lists for each input type
-const uppercaseLetters = ["A","B"]
+const uppercaseLetters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q"]
 
 // Write password to the #password input
 function writePassword() {
@@ -21,6 +21,7 @@ const generatePassword = () => {
   const pwlength =  Number(prompt("How many characters should the password be? Enter a number between 8-128"));
   if (pwlength >= 128 || pwlength <= 8) {
     alert("Entry does not meet the requirements. Please enter a valid number between 8-12.")
+    return "Try again!";
   } 
 
   const isLowercaseInput = prompt("Include lowercase letters? Enter Y to include").toUpperCase();
@@ -56,12 +57,30 @@ const generatePassword = () => {
     isSpecial: isSpecial
   }
 
-  //check that form data is added
+  // check that form data is added
   console.log(passwordInputs);
 
-  //use input to create password
-  Math.random()
+  // use input to create password
+
+
+  // random number to assign how many capital letters are in the password
+  let numUpper = Math.floor(Math.random() * pwlength);
+  
+  // empty array to store random uppercase letters
+  let upperLetters = [];
+  for (let i = 0; i < numUpper; i++) {
+  // using random number to determine index of uppercaseLetters to use for password
+  const upperRandom = Math.floor(Math.random() * uppercaseLetters.length);
+  // uppercaseLetters[i] = uppercaseLetters[upperRandom];
+  // uppercaseLetters[upperRandom].push(uppercaseLetters[i]);
+  upperLetters[i] = upperLetters.push(uppercaseLetters[upperRandom]);
+  console.log(upperLetters);
+  }
+
+  // let numLower = Math.floor(Math.random() * pwlength);
+
+  
+
+
 }
-
-
 
