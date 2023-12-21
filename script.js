@@ -1,6 +1,9 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
+//create option lists for each input type
+const uppercaseLetters = ["A","B"]
+
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
@@ -13,16 +16,36 @@ function writePassword() {
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
-//add event listener for form submit and create function to add to new object
-document.getElementById("pwForm").addEventListener('submit', function(event) {
-  event.preventDefault();
+//Add prompts for password inputs
+const generatePassword = () => {
+  const pwlength =  Number(prompt("How many characters should the password be? Enter a number between 8-128"));
+  if (pwlength >= 128 || pwlength <= 8) {
+    alert("Entry does not meet the requirements. Please enter a valid number between 8-12.")
+  } 
 
-  //get form values
-  const pwlength = document.getElementById('pwlength').value;
-  const isLowercase = document.getElementsByName('isLowercaseinput')[0].checked;
-  const isUppercase = document.getElementsByName('isUppercaseinput')[0].checked;
-  const isNumeric = document.getElementsByName('isNumericinput')[0].checked;
-  const isSpecial = document.getElementsByName('isSpecialinput')[0].checked;
+  const isLowercaseInput = prompt("Include lowercase letters? Enter Y to include").toUpperCase();
+  let isLowercase = "N";
+  if (isLowercaseInput === "Y") {
+    isLowercase = isLowercaseInput; 
+  }
+
+  const isUppercaseInput = prompt("Include uppercase letters? Enter Y to include").toUpperCase();
+  let isUppercase = "N";
+  if (isUppercaseInput === "Y") {
+    isUppercase = isUppercaseInput; 
+  }
+
+  const isNumericInput = prompt("Include numbers? Enter Y to include").toUpperCase();
+  let isNumeric = "N";
+  if (isNumericInput === "Y") {
+    isNumeric = isNumericInput; 
+  }
+
+  const isSpecialInput = prompt("Include special characters? Enter Y to include").toUpperCase();
+  let isSpecial = "N";
+  if (isSpecialInput === "Y") {
+    isSpecial = isSpecialInput; 
+  }
 
   //store form values in new object
   const passwordInputs = {
@@ -36,5 +59,9 @@ document.getElementById("pwForm").addEventListener('submit', function(event) {
   //check that form data is added
   console.log(passwordInputs);
 
-});
+  //use input to create password
+  Math.random()
+}
+
+
 
