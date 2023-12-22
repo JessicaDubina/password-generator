@@ -10,7 +10,7 @@ N/A
 
 ## Usage
 
-Example of a gerated password based on the provided criteria inputs
+Example of a generated password based on the provided criteria inputs
 ![Example of generated password](images/page-screen-shot.png)
 
 
