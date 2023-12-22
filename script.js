@@ -121,7 +121,6 @@ const generatePassword = () => {
       pwdCharacters.push(specialCharacters[specialRandom]);
     }
   }
-  console.log(pwdCharacters);
 
   //randomize location of each character - using Fisher-Yates shuffle method
   function shuffle(arr) {
@@ -136,8 +135,11 @@ const generatePassword = () => {
   }
   
   shuffle(pwdCharacters);
-  console.log(pwdCharacters);
 
+  //convert the array to a string
+  let passwordString = pwdCharacters.join("");
+  console.log(passwordString);
+  return passwordString;
 }
 
 
