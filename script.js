@@ -123,10 +123,23 @@ const generatePassword = () => {
   }
   console.log(pwdCharacters);
 
-  //put the password characters into a single array
+  //randomize location of each character - using Fisher-Yates shuffle method
+  function shuffle(arr) {
+    let currentIndex = arr.length,  randomIndex;
+    while (currentIndex > 0) {
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+      [arr[currentIndex], arr[randomIndex]] = [
+        arr[randomIndex], arr[currentIndex]];
+    }
+    return arr;
+  }
+  
+  shuffle(pwdCharacters);
+  console.log(pwdCharacters);
 
 }
 
 
-//put the password characters into a single array
-//randomize location of each character - mix it up
+
+
