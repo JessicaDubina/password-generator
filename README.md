@@ -1,5 +1,18 @@
 # password-generator
+
+## Description
 Generates a random password based on selected criteria
+
+https://jessicadubina.github.io/password-generator/
+
+## Installtion
+N/A
+
+## Usage
+
+Example of a gerated password based on the provided criteria inputs
+![Example of generated password](images/page-screen-shot.png)
+
 
 
 ## Credits
@@ -16,3 +29,6 @@ Ficher-Yates shuffle algorithm was used to randomize the character placements wi
         return arr;
     } 
 https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle
+
+## Licence
+Please refer to license attached to the project.
